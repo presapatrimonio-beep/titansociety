@@ -1,0 +1,6 @@
+{
+  "name": "TITANS SOCIETY",
+  "description": "Plataforma institucional de networking empresarial intencional. Curadoria, mérito, exclusividade por especialidade e relações estratégicas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Cinzel', serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  --color-obsidian-deep: #050505;
+  --color-obsidian-arch: #0C0C0B;
+  --color-charcoal-mineral: #151513;
+  --color-bronze-dark: #B9944D;
+  --color-gold-inst: #D4B36A;
+  --color-gold-light: #E8D19B;
+  --color-ivory-warm: #F0EDE6;
+  --color-gray-editorial: #A6A19A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050505;
+    color: #F0EDE6;
+  }
+  body {
+    background-color: #050505;
+    color: #F0EDE6;
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background-color: rgba(212, 179, 106, 0.25);
+    color: #E8D19B;
+  }
+}
+
+/* Materiality & Architectural Finishes */
+.gold-foil-subtle {
+  background: linear-gradient(135deg, #F0EDE6 0%, #E8D19B 30%, #D4B36A 65%, #B9944D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F0EDE6 0%, #E8D19B 35%, #D4B36A 70%, #B9944D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Restrained Architectural Buttons */
+.gold-button-primary {
+  background: #D4B36A;
+  color: #050505;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -4px rgba(212, 179, 106, 0.3);
+}
+
+.gold-button-primary:hover {
+  background: #E8D19B;
+  box-shadow: 0 6px 28px rgba(212, 179, 106, 0.4);
+  transform: translateY(-1px);
+}
+
+.gold-button-secondary {
+  background: transparent;
+  color: #F0EDE6;
+  border: 1px solid rgba(212, 179, 106, 0.35);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-button-secondary:hover {
+  background: rgba(212, 179, 106, 0.08);
+  border-color: #D4B36A;
+  color: #E8D19B;
+  transform: translateY(-1px);
+}
+
+/* Custom discreet scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C1C1A;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4B36A;
+}
