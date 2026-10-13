@@ -18,6 +18,7 @@ import { CinematicClosing } from './components/CinematicClosing';
 import { Footer } from './components/Footer';
 import { PrivacyModal } from './components/PrivacyModal';
 import { ContactModal } from './components/ContactModal';
+import { CinematicIntro } from './components/CinematicIntro';
 import { InterestType } from './types';
 
 export default function App() {
@@ -48,6 +49,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#F4F0E8] selection:bg-[#C9A45C]/30 selection:text-[#F0D28A] flex flex-col font-sans">
+      {/* Cinematic Video Introduction (First Visit Per Session) */}
+      <CinematicIntro />
+
       {/* 00. Institutional Header / Navbar */}
       <Header onOpenCandidacy={() => scrollToSection('#candidatura')} />
 
