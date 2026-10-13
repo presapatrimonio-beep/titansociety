@@ -74,7 +74,7 @@ export const ExclusivitySection: React.FC<ExclusivitySectionProps> = ({ onReques
         {/* Monumental Architectural Portal Display */}
         <div className="relative aspect-[16/9] sm:aspect-[21/9] overflow-hidden rounded-xs mb-20 group">
           <img
-            src="/src/assets/images/curatorship_portal_1791896597522.jpg"
+            src="/assets/images/curatorship_portal_1791896597522.jpg"
             alt="The Inner Gate — Portal monumental em pedra mineral negra e metal dourado"
             className="w-full h-full object-cover filter contrast-125 transition-transform duration-1000 ease-out group-hover:scale-102"
             referrerPolicy="no-referrer"

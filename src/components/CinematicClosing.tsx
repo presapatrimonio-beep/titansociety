@@ -11,7 +11,7 @@ export const CinematicClosing: React.FC<CinematicClosingProps> = ({ onStartCandi
       {/* Background Architectural Canvas */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/boardroom_executive_1791896596094.jpg"
+          src="/assets/images/boardroom_executive_1791896596094.jpg"
           alt="Vista cinematográfica de conselho executivo TITANS SOCIETY"
           className="w-full h-full object-cover object-center opacity-25 filter grayscale contrast-125 scale-105"
           referrerPolicy="no-referrer"
@@ -23,7 +23,7 @@ export const CinematicClosing: React.FC<CinematicClosingProps> = ({ onStartCandi
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 flex flex-col items-center">
         <img
-          src="/src/assets/logo.png"
+          src="/assets/logo.png"
           alt="TITANS SOCIETY"
           className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain filter drop-shadow-[0_6px_35px_rgba(212,179,106,0.3)] mb-8 opacity-95"
         />

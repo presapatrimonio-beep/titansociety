@@ -117,7 +117,7 @@ export const CONCEPTUAL_ENVIRONMENTS: ConceptualEnvironment[] = [
     subtitle: 'O Santuário da Decisão Estratégica',
     description: 'Ambientes desenhados para acolher reuniões de alto impacto, onde temas complexos de governança, fusões e projeções de longo prazo são tratados com sobriedade e foco absoluto.',
     architecturalNote: 'Madeira escura ebanizada, iluminação linear rasgada e isolamento acústico absoluto.',
-    imagePath: '/src/assets/images/boardroom_executive_1791896596094.jpg'
+    imagePath: '/assets/images/boardroom_executive_1791896596094.jpg'
   },
   {
     id: 'connection',
@@ -125,7 +125,7 @@ export const CONCEPTUAL_ENVIRONMENTS: ConceptualEnvironment[] = [
     subtitle: 'A Precisão do Movimento Tático',
     description: 'A analogia do xadrez materializada: cada encontro 1-a-1 é um movimento ponderado. Não se trata de pressa em fechar um contrato, mas de alinhar intenções para relações duradouras.',
     architecturalNote: 'Mármore Nero Marquina com veios dourados e elementos de metal escovado de precisão.',
-    imagePath: '/src/assets/images/hero_chess_monolith_1791896594267.jpg'
+    imagePath: '/assets/images/hero_chess_monolith_1791896594267.jpg'
   },
   {
     id: 'inner-circle',
@@ -133,7 +133,7 @@ export const CONCEPTUAL_ENVIRONMENTS: ConceptualEnvironment[] = [
     subtitle: 'O Refúgio Privado dos Líderes',
     description: 'Espaço reservado onde a guarda pode ser baixada entre pares idôneos. Um ambiente de confidencialidade onde vulnerabilidades de liderança e dilemas reais são compartilhados sem julgamentos.',
     architecturalNote: 'Painéis ripados em carvão mineral, couro envelhecido e meia-luz cinematográfica intimista.',
-    imagePath: '/src/assets/images/inner_circle_lounge_1791896599200.jpg'
+    imagePath: '/assets/images/inner_circle_lounge_1791896599200.jpg'
   },
   {
     id: 'global-perspective',
@@ -141,7 +141,7 @@ export const CONCEPTUAL_ENVIRONMENTS: ConceptualEnvironment[] = [
     subtitle: 'O Horizonte Além das Fronteiras',
     description: 'A elevação do olhar sobre os grandes centros de decisão mundiais. Conexão entre ecossistemas de capitais internacionais e lideranças preparadas para transações sem limites territoriais.',
     architecturalNote: 'Vidro temperado fumê sobre o horizonte metropolitano ao cair da tarde.',
-    imagePath: '/src/assets/images/global_perspective_1791896599228.jpg'
+    imagePath: '/assets/images/global_perspective_1791896599228.jpg'
   }
 ];
 

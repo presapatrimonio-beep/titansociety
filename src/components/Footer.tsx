@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenContact }) 
           {/* Brand & Purpose */}
           <div className="md:col-span-5 flex flex-col items-start">
             <img
-              src="/src/assets/logo.png"
+              src="/assets/logo.png"
               alt="TITANS SOCIETY"
               className="h-14 sm:h-18 md:h-24 w-auto object-contain filter drop-shadow-[0_4px_20px_rgba(212,179,106,0.3)] mb-6"
             />

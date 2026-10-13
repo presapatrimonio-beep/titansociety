@@ -33,7 +33,7 @@ export const ProblemSection: React.FC = () => {
           <div className="lg:col-span-5 relative lg:sticky lg:top-28">
             <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-xs">
               <img
-                src="/src/assets/images/financial_district_night_1791898482626.jpg"
+                src="/assets/images/financial_district_night_1791898482626.jpg"
                 alt="Distrito financeiro noturno — O custo invisível do networking convencional"
                 className="w-full h-full object-cover filter contrast-125 opacity-70"
                 referrerPolicy="no-referrer"

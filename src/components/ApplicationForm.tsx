@@ -177,7 +177,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
             {/* Background Image Texture */}
             <div className="absolute inset-0 z-0 opacity-20">
               <img
-                src="/src/assets/images/inner_circle_lounge_1791896599200.jpg"
+                src="/assets/images/inner_circle_lounge_1791896599200.jpg"
                 alt="Atmosfera de acesso privado TITANS SOCIETY"
                 className="w-full h-full object-cover filter contrast-125"
                 referrerPolicy="no-referrer"
@@ -187,7 +187,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 
             <div className="relative z-10 text-left">
               <img
-                src="/src/assets/logo.png"
+                src="/assets/logo.png"
                 alt="TITANS SOCIETY"
                 className="h-14 sm:h-18 w-auto object-contain filter drop-shadow-[0_4px_22px_rgba(212,179,106,0.35)] mb-8"
               />

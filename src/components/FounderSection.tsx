@@ -61,7 +61,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCir
         {/* Monumental Central Artwork: The Empty Chair of Leadership */}
         <div className="relative aspect-[16/9] sm:aspect-[21/9] overflow-hidden rounded-xs mb-20 group">
           <img
-            src="/src/assets/images/founding_chair_monolith_1791898483923.jpg"
+            src="/assets/images/founding_chair_monolith_1791898483923.jpg"
             alt="Mesa de pedra negra com a cadeira central vazia simbolizando responsabilidade e liderança fundadora"
             className="w-full h-full object-cover object-center filter contrast-125 transition-transform duration-1000 ease-out group-hover:scale-102"
             referrerPolicy="no-referrer"

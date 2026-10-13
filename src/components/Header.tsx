@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCandidacy }) => {
             aria-label="TITANS SOCIETY Início"
           >
             <img
-              src="/src/assets/logo.png"
+              src="/assets/logo.png"
               alt="TITANS SOCIETY"
               className={`${
                 isScrolled ? 'h-12 sm:h-14 md:h-16' : 'h-16 sm:h-20 md:h-24 lg:h-28'

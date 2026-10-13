@@ -12,17 +12,17 @@ export const MembershipTiers: React.FC<MembershipTiersProps> = ({ onSelectTier }
 
   const tierMeta: Record<string, { image: string; scale: string; narrative: string }> = {
     connect: {
-      image: '/src/assets/images/inner_circle_lounge_1791896599200.jpg',
+      image: '/assets/images/inner_circle_lounge_1791896599200.jpg',
       scale: '01 · Nível Regional',
       narrative: 'A fortaleza local de confiança inegociável. Uma única cadeira por especialidade blinda o nicho de mercado e catalisa referências qualificadas de alto valor no polo metropolitano.'
     },
     council: {
-      image: '/src/assets/images/boardroom_executive_1791896596094.jpg',
+      image: '/assets/images/boardroom_executive_1791896596094.jpg',
       scale: '02 · Nível Nacional',
       narrative: 'A articulação estratégica entre múltiplos centros de decisão econômica. Diálogos de governança, fusões, alianças interestaduais e comitês setoriais de alta densidade.'
     },
     global: {
-      image: '/src/assets/images/global_perspective_1791896599228.jpg',
+      image: '/assets/images/global_perspective_1791896599228.jpg',
       scale: '03 · Nível Internacional',
       narrative: 'A amplitude sobre as capitais financeiras mundiais. Relações com fundos, ecossistemas de inovação no exterior, missões institucionais e posicionamento sem limites territoriais.'
     }

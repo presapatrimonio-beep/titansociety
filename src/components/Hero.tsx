@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreSystem, onStartCandidacy })
       {/* Background Architectural Canvas — Bleeding into deep obsidian */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
-          src="/src/assets/images/monumental_hero_pavilion_1791898483900.jpg"
+          src="/assets/images/monumental_hero_pavilion_1791898483900.jpg"
           alt="Monumental dark architecture"
           className="w-full h-full object-cover object-center opacity-30 filter contrast-125 scale-100"
           referrerPolicy="no-referrer"
@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreSystem, onStartCandidacy })
       <div className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 z-0 pointer-events-none flex items-center justify-end overflow-hidden">
         <div className="relative w-full h-full max-w-2xl lg:max-w-none">
           <img
-            src="/src/assets/images/hero_chess_monolith_1791896594267.jpg"
+            src="/assets/images/hero_chess_monolith_1791896594267.jpg"
             alt="Escultura da peça de xadrez dourada da TITANS SOCIETY"
             className="w-full h-full object-cover object-center opacity-45 lg:opacity-60 filter contrast-125 mix-blend-screen scale-100"
             referrerPolicy="no-referrer"
