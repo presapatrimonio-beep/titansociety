@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface HeaderProps {
   onOpenCandidacy?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ onOpenCandidacy }) => {
+  const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -18,13 +20,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCandidacy }) => {
   }, []);
 
   const navLinks = [
-    { label: 'O Diagnóstico', href: '#o-problema' },
-    { label: 'O Sistema', href: '#sistema-titan' },
-    { label: 'A Jornada', href: '#niveis' },
-    { label: 'O Acesso', href: '#exclusividade' },
-    { label: 'Núcleo Fundador', href: '#nucleo-fundador' },
-    { label: 'Experiência', href: '#experiencia' },
-    { label: 'FAQ', href: '#faq' },
+    { label: t.nav.diagnosis, href: '#o-problema' },
+    { label: t.nav.system, href: '#sistema-titan' },
+    { label: t.nav.journey, href: '#niveis' },
+    { label: t.nav.access, href: '#exclusividade' },
+    { label: t.nav.founders, href: '#nucleo-fundador' },
+    { label: t.nav.experience, href: '#experiencia' },
+    { label: t.nav.faq, href: '#faq' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -90,18 +92,65 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCandidacy }) => {
             ))}
           </nav>
 
-          {/* Primary CTA (Proporcional, Sem Peso Excessivo) */}
+          {/* Primary CTA & Language Switcher */}
           <div className="hidden sm:flex items-center gap-4 shrink-0">
+            {/* Discreet Language Selector */}
+            <div className="flex items-center text-[10px] font-mono tracking-widest border border-[#C9A45C]/35 px-2.5 py-1 text-[#A6A19A] bg-black/40 backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setLanguage('pt')}
+                className={`transition-colors cursor-pointer px-1 ${
+                  language === 'pt' ? 'text-[#D4AF37] font-bold' : 'hover:text-[#F0EDE6]'
+                }`}
+                title="Português"
+              >
+                PT
+              </button>
+              <span className="text-[#C9A45C]/40">|</span>
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`transition-colors cursor-pointer px-1 ${
+                  language === 'en' ? 'text-[#D4AF37] font-bold' : 'hover:text-[#F0EDE6]'
+                }`}
+                title="English"
+              >
+                EN
+              </button>
+            </div>
+
             <button
               onClick={handleCtaClick}
               className="px-5 py-2.5 text-[10px] font-bold tracking-[0.22em] uppercase text-[#050505] bg-[#D4B36A] hover:bg-[#E8D19B] transition-all duration-200 rounded-xs shadow-[0_2px_14px_rgba(212,179,106,0.25)] whitespace-nowrap shrink-0 focus:outline-none cursor-pointer"
             >
-              Iniciar Candidatura
+              {t.nav.requestAccess}
             </button>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <div className="flex lg:hidden items-center">
+          {/* Mobile Menu Trigger & Switcher */}
+          <div className="flex lg:hidden items-center gap-2.5">
+            <div className="flex items-center text-[9px] font-mono tracking-widest border border-[#C9A45C]/35 px-2 py-0.5 text-[#A6A19A] bg-black/40">
+              <button
+                type="button"
+                onClick={() => setLanguage('pt')}
+                className={`transition-colors cursor-pointer px-1 ${
+                  language === 'pt' ? 'text-[#D4AF37] font-bold' : 'hover:text-[#F0EDE6]'
+                }`}
+              >
+                PT
+              </button>
+              <span className="text-[#C9A45C]/40">|</span>
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`transition-colors cursor-pointer px-1 ${
+                  language === 'en' ? 'text-[#D4AF37] font-bold' : 'hover:text-[#F0EDE6]'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 text-[#F0EDE6] hover:text-[#D4B36A] focus:outline-none cursor-pointer"
@@ -136,7 +185,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCandidacy }) => {
               onClick={handleCtaClick}
               className="mt-6 w-full py-4 text-xs font-bold tracking-[0.24em] uppercase text-[#050505] bg-[#D4B36A] hover:bg-[#E8D19B] transition-colors rounded-xs flex items-center justify-center cursor-pointer"
             >
-              Iniciar Candidatura
+              {t.nav.requestAccess}
             </button>
           </div>
 

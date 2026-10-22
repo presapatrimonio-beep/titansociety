@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { TITAN_PILLARS } from '../data/societyData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const TitanSystem: React.FC = () => {
+  const { language, t } = useLanguage();
   const [activeId, setActiveId] = useState<number>(1);
-  const activePillar = TITAN_PILLARS.find((p) => p.id === activeId) || TITAN_PILLARS[0];
+  const pillars = t.system.pillars;
+  const activePillar = pillars.find((p) => p.id === activeId) || pillars[0];
 
   return (
     <section id="sistema-titan" className="relative bg-[#050505] text-[#F0EDE6] py-32 overflow-hidden">
@@ -12,16 +14,18 @@ export const TitanSystem: React.FC = () => {
         {/* Section Heading */}
         <div className="max-w-3xl mb-16 text-left">
           <span className="text-[11px] font-mono uppercase tracking-[0.28em] text-[#D4B36A] font-semibold block mb-3">
-            A Engenharia da Confiança
+            {language === 'pt' ? 'A Engenharia da Confiança' : 'The Engineering of Trust'}
           </span>
           <h2 
             className="text-3xl sm:text-5xl font-display font-medium uppercase tracking-[0.03em] leading-tight mb-4 text-[#F0EDE6]"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            O Sistema TITAN
+            {language === 'pt' ? 'O Sistema TITAN' : 'The TITAN System'}
           </h2>
           <p className="text-sm sm:text-base text-[#A6A19A] font-sans font-light leading-relaxed max-w-xl">
-            Uma engrenagem proprietária de sete vetores integrados. Selecione um elemento para inspecionar seus fundamentos operacionais.
+            {language === 'pt'
+              ? 'Uma engrenagem proprietária de sete vetores integrados. Selecione um elemento para inspecionar seus fundamentos operacionais.'
+              : 'A proprietary engine of seven integrated vectors. Select an element to inspect its operational foundations.'}
           </p>
         </div>
 
@@ -32,7 +36,7 @@ export const TitanSystem: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col justify-between">
             {/* Minimalist Vector Grid (Refined linear list with active highlight) */}
             <div className="divide-y divide-[#151513] border-t border-b border-[#151513]">
-              {TITAN_PILLARS.map((pillar) => {
+              {pillars.map((pillar) => {
                 const isSelected = pillar.id === activeId;
                 return (
                   <button
@@ -62,7 +66,7 @@ export const TitanSystem: React.FC = () => {
                     </div>
 
                     <span className={`text-[10px] font-mono tracking-widest uppercase transition-opacity ${isSelected ? 'text-[#D4B36A] opacity-100' : 'opacity-0 group-hover:opacity-60'}`}>
-                      {isSelected ? 'Ativo' : 'Ver'}
+                      {isSelected ? (language === 'pt' ? 'Ativo' : 'Active') : (language === 'pt' ? 'Ver' : 'View')}
                     </span>
                   </button>
                 );
@@ -78,7 +82,7 @@ export const TitanSystem: React.FC = () => {
               </span>
               <div className="h-6 w-[1px] bg-[#D4B36A]/30" />
               <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] font-semibold">
-                Vetor Institucional
+                {language === 'pt' ? 'Vetor Institucional' : 'Institutional Vector'}
               </span>
             </div>
 
@@ -100,7 +104,7 @@ export const TitanSystem: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-[#151513]">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#D4B36A] block mb-1 font-semibold">
-                  Impacto Operacional
+                  {language === 'pt' ? 'Impacto Operacional' : 'Operational Impact'}
                 </span>
                 <p className="text-xs text-[#A6A19A] leading-relaxed font-sans font-light">
                   {activePillar.operationalImpact}
@@ -109,7 +113,7 @@ export const TitanSystem: React.FC = () => {
 
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#D4B36A] block mb-1 font-semibold">
-                  Mecanismo de Aplicação
+                  {language === 'pt' ? 'Mecanismo de Aplicação' : 'Application Mechanism'}
                 </span>
                 <p className="text-xs text-[#A6A19A] leading-relaxed font-sans font-light">
                   {activePillar.ritualDetail}

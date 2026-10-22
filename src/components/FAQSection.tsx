@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { FAQ_ITEMS } from '../data/societyData';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FAQSection: React.FC = () => {
+  const { language, t } = useLanguage();
   const [openId, setOpenId] = useState<string | null>('faq-1');
+
+  const items = t.faq.items;
 
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -16,22 +19,28 @@ export const FAQSection: React.FC = () => {
         <div className="text-left mb-16">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.28em] text-[#D4B36A] font-semibold mb-4">
             <HelpCircle className="w-4 h-4 text-[#D4B36A]" />
-            <span>Governança & Esclarecimentos Institucionais</span>
+            <span>
+              {language === 'pt'
+                ? 'Governança & Esclarecimentos Institucionais'
+                : 'Governance & Institutional Clarifications'}
+            </span>
           </div>
           <h2 
             className="text-3xl sm:text-5xl font-display font-medium text-[#F0EDE6] uppercase tracking-[0.03em] leading-tight mb-4"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Perguntas Frequentes
+            {language === 'pt' ? 'Perguntas Frequentes' : 'Frequently Asked Questions'}
           </h2>
           <p className="text-base text-[#A6A19A] font-sans leading-relaxed font-light">
-            Esclarecimentos sobre governança, critérios de admissão e operação do Sistema TITAN.
+            {language === 'pt'
+              ? 'Esclarecimentos sobre governança, critérios de admissão e operação do Sistema TITAN.'
+              : 'Clarifications on governance, admission criteria, and operation of the TITAN System.'}
           </p>
         </div>
 
-        {/* Minimalist Editorial Accordion (Clean lines, no heavy gold boxes!) */}
+        {/* Minimalist Editorial Accordion */}
         <div className="divide-y divide-[#181818] border-t border-b border-[#181818]">
-          {FAQ_ITEMS.map((item, index) => {
+          {items.map((item, index) => {
             const isOpen = openId === item.id;
             return (
               <div
@@ -71,9 +80,11 @@ export const FAQSection: React.FC = () => {
 
         {/* Quiet Footnote */}
         <div className="mt-12 text-left text-xs font-mono text-[#F4F0E8]/40">
-          Dúvidas específicas sobre assentos setoriais?{' '}
+          {language === 'pt'
+            ? 'Dúvidas específicas sobre assentos setoriais? '
+            : 'Specific queries regarding industry seats? '}
           <a href="#candidatura" className="text-[#C9A45C] hover:underline font-semibold">
-            Consulte a Secretaria Executiva
+            {language === 'pt' ? 'Consulte a Secretaria Executiva' : 'Consult the Executive Secretariat'}
           </a>
           .
         </div>

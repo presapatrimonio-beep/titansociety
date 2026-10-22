@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { CONCEPTUAL_ENVIRONMENTS } from '../data/societyData';
 import { ConceptualEnvironment } from '../types';
 import { Maximize2, X, Compass } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ExperienceGallery: React.FC = () => {
+  const { language, t } = useLanguage();
   const [activeEnvironment, setActiveEnvironment] = useState<ConceptualEnvironment | null>(null);
 
-  const boardroom = CONCEPTUAL_ENVIRONMENTS.find(e => e.id === 'boardroom') || CONCEPTUAL_ENVIRONMENTS[0];
-  const connection = CONCEPTUAL_ENVIRONMENTS.find(e => e.id === 'connection') || CONCEPTUAL_ENVIRONMENTS[1];
-  const innerCircle = CONCEPTUAL_ENVIRONMENTS.find(e => e.id === 'inner-circle') || CONCEPTUAL_ENVIRONMENTS[2];
-  const globalPerspective = CONCEPTUAL_ENVIRONMENTS.find(e => e.id === 'global-perspective') || CONCEPTUAL_ENVIRONMENTS[3];
+  const environments = t.experience.environments;
+  const boardroom = environments.find(e => e.id === 'boardroom') || environments[0];
+  const connection = environments.find(e => e.id === 'connection') || environments[1];
+  const innerCircle = environments.find(e => e.id === 'inner-circle') || environments[2];
+  const globalPerspective = environments.find(e => e.id === 'global-perspective') || environments[3];
 
   return (
     <section id="experiencia" className="relative py-36 bg-[#050505] overflow-hidden text-[#F0EDE6]">
@@ -22,21 +24,29 @@ export const ExperienceGallery: React.FC = () => {
         <div className="max-w-4xl text-left mb-20">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.28em] text-[#D4B36A] font-semibold mb-4">
             <Compass className="w-4 h-4 text-[#D4B36A]" />
-            <span>Atmosferas Conceituais · Cenários Institucionais</span>
+            <span>
+              {language === 'pt'
+                ? 'Atmosferas Conceituais · Cenários Institucionais'
+                : 'Conceptual Atmospheres · Institutional Settings'}
+            </span>
           </div>
 
           <h2 
             className="text-3xl sm:text-5xl md:text-6xl font-display font-medium text-[#F0EDE6] uppercase tracking-[0.03em] leading-[1.06] mb-6"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            A Experiência TITANS
+            {language === 'pt' ? 'A Experiência TITANS' : 'The TITANS Experience'}
           </h2>
 
           <p className="text-lg sm:text-xl text-[#F0EDE6]/80 font-serif italic max-w-2xl leading-relaxed font-light">
-            Territórios conceituais onde a arquitetura, a sobriedade e a discrição servem de palco para grandes articulações.
+            {language === 'pt'
+              ? 'Territórios conceituais onde a arquitetura, a sobriedade e a discrição servem de palco para grandes articulações.'
+              : 'Conceptual spaces where architecture, sobriety, and discretion set the stage for monumental deliberations.'}
           </p>
           <span className="text-[11px] font-mono text-[#A6A19A] tracking-wider uppercase block mt-4">
-            *Ambientes conceituais representando a atmosfera dos rituais executivos
+            {language === 'pt'
+              ? '*Ambientes conceituais representando a atmosfera dos rituais executivos'
+              : '*Conceptual environments representing the atmosphere of executive rituals'}
           </span>
         </div>
 
@@ -64,7 +74,7 @@ export const ExperienceGallery: React.FC = () => {
             <div className="absolute bottom-8 left-8 right-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-left">
               <div>
                 <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] block mb-1 font-semibold">
-                  01 · ATMOSFERA ESTRATÉGICA
+                  {language === 'pt' ? '01 · ATMOSFERA ESTRATÉGICA' : '01 · STRATEGIC ATMOSPHERE'}
                 </span>
                 <h3 
                   className="text-2xl sm:text-4xl font-display font-medium text-[#F0EDE6] uppercase tracking-wide group-hover:text-[#E8D19B] transition-colors"
@@ -98,51 +108,51 @@ export const ExperienceGallery: React.FC = () => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
-
+              
               <div className="absolute top-6 right-6 p-2.5 bg-[#050505]/80 backdrop-blur-sm text-[#F0EDE6] group-hover:text-[#D4B36A] border border-[#151513] rounded-xs transition-colors">
                 <Maximize2 className="w-4 h-4" />
               </div>
 
               <div className="relative z-10 text-left">
                 <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] block mb-1 font-semibold">
-                  02 · ESPAÇO RESERVADO
+                  {language === 'pt' ? '02 · AMBIENTE CONFIDENCIAL' : '02 · CONFIDENTIAL SANCTUARY'}
                 </span>
                 <h3 
-                  className="text-2xl font-display font-medium text-[#F0EDE6] uppercase tracking-wide group-hover:text-[#E8D19B] transition-colors mb-1"
+                  className="text-2xl sm:text-3xl font-display font-medium text-[#F0EDE6] uppercase tracking-wide group-hover:text-[#E8D19B] transition-colors mb-1"
                   style={{ fontFamily: "'Cinzel', serif" }}
                 >
                   {innerCircle.title}
                 </h3>
-                <p className="text-sm font-serif italic text-[#D4B36A] mb-3">
+                <p className="text-sm font-serif italic text-[#D4B36A] mb-2">
                   {innerCircle.subtitle}
                 </p>
-                <p className="text-xs text-[#A6A19A] font-sans font-light line-clamp-3">
+                <p className="text-xs text-[#A6A19A] font-sans font-light">
                   {innerCircle.description}
                 </p>
               </div>
             </div>
 
-            {/* Right: Wide / Panoramic Frame (THE GLOBAL PERSPECTIVE) */}
+            {/* Right: Horizontal Panoramic Frame (THE GLOBAL PERSPECTIVE) */}
             <div 
               onClick={() => setActiveEnvironment(globalPerspective)}
-              className="lg:col-span-7 group relative aspect-[16/10] lg:aspect-auto overflow-hidden rounded-xs cursor-pointer shadow-2xl flex flex-col justify-end p-8"
+              className="lg:col-span-7 group relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden rounded-xs cursor-pointer shadow-2xl flex flex-col justify-end p-8"
             >
               <img
                 src={globalPerspective.imagePath}
-                alt="THE GLOBAL PERSPECTIVE - Visão panorâmica sobre centros financeiros"
+                alt="THE GLOBAL PERSPECTIVE - Conexão transfronteiriça com centros de decisão globais"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-102"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
-
+              
               <div className="absolute top-6 right-6 p-2.5 bg-[#050505]/80 backdrop-blur-sm text-[#F0EDE6] group-hover:text-[#D4B36A] border border-[#151513] rounded-xs transition-colors">
                 <Maximize2 className="w-4 h-4" />
               </div>
 
               <div className="relative z-10 text-left">
                 <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] block mb-1 font-semibold">
-                  03 · AMPLITUDE TRANSFRONTEIRIÇA
+                  {language === 'pt' ? '03 · HORIZONTE GLOBAL' : '03 · GLOBAL HORIZON'}
                 </span>
                 <h3 
                   className="text-2xl sm:text-3xl font-display font-medium text-[#F0EDE6] uppercase tracking-wide group-hover:text-[#E8D19B] transition-colors mb-1"
@@ -150,10 +160,10 @@ export const ExperienceGallery: React.FC = () => {
                 >
                   {globalPerspective.title}
                 </h3>
-                <p className="text-sm font-serif italic text-[#D4B36A] mb-3">
+                <p className="text-sm font-serif italic text-[#D4B36A] mb-2">
                   {globalPerspective.subtitle}
                 </p>
-                <p className="text-xs text-[#A6A19A] font-sans font-light max-w-xl">
+                <p className="text-xs text-[#A6A19A] font-sans font-light">
                   {globalPerspective.description}
                 </p>
               </div>
@@ -161,28 +171,27 @@ export const ExperienceGallery: React.FC = () => {
 
           </div>
 
-          {/* Feature 4: The Strategic Micro Connection Frame (THE CONNECTION) */}
+          {/* Feature 4: Full-Width Horizontal Editorial Block (THE CONNECTION) */}
           <div 
             onClick={() => setActiveEnvironment(connection)}
-            className="group relative aspect-[21/8] overflow-hidden rounded-xs cursor-pointer shadow-2xl flex items-end p-8 sm:p-10"
+            className="group relative aspect-[16/9] sm:aspect-[21/9] overflow-hidden rounded-xs cursor-pointer shadow-2xl flex flex-col justify-end p-8 sm:p-12"
           >
             <img
               src={connection.imagePath}
-              alt="THE CONNECTION - O movimento estratégico calculado"
-              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-102"
+              alt="THE CONNECTION - Precisão do movimento tático no xadrez executivo"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-102"
               referrerPolicy="no-referrer"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent" />
-
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent" />
+            
             <div className="absolute top-6 right-6 p-2.5 bg-[#050505]/80 backdrop-blur-sm text-[#F0EDE6] group-hover:text-[#D4B36A] border border-[#151513] rounded-xs transition-colors">
               <Maximize2 className="w-4 h-4" />
             </div>
 
             <div className="relative z-10 text-left max-w-xl">
               <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] block mb-1 font-semibold">
-                04 · O MOVIMENTO TÁTICO
+                {language === 'pt' ? '04 · O MOVIMENTO TÁTICO' : '04 · THE TACTICAL MOVE'}
               </span>
               <h3 
                 className="text-2xl sm:text-3xl font-display font-medium text-[#F0EDE6] uppercase tracking-wide group-hover:text-[#E8D19B] transition-colors mb-1"
@@ -233,7 +242,7 @@ export const ExperienceGallery: React.FC = () => {
 
             <div className="p-8 sm:p-10 text-left bg-[#050505]">
               <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] font-semibold block mb-2">
-                Atmosfera Conceitual
+                {language === 'pt' ? 'Atmosfera Conceitual' : 'Conceptual Atmosphere'}
               </span>
               <h3 
                 className="text-3xl sm:text-4xl font-display font-medium text-[#F0EDE6] uppercase tracking-wide mb-2"
@@ -248,8 +257,10 @@ export const ExperienceGallery: React.FC = () => {
                 {activeEnvironment.description}
               </p>
               <div className="pt-4 border-t border-[#151513] flex items-center justify-between text-xs font-mono text-[#A6A19A]">
-                <span>TITANS SOCIETY · CENOGRAFIA CORPORATIVA</span>
-                <span className="text-[#D4B36A]">RESERVADO A MEMBROS HOMOLOGADOS</span>
+                <span>TITANS SOCIETY · {language === 'pt' ? 'CENOGRAFIA CORPORATIVA' : 'EXECUTIVE SCENOGRAPHY'}</span>
+                <span className="text-[#D4B36A]">
+                  {language === 'pt' ? 'RESERVADO A MEMBROS HOMOLOGADOS' : 'RESERVED TO ACCREDITED MEMBERS'}
+                </span>
               </div>
             </div>
           </div>

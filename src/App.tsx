@@ -19,6 +19,7 @@ import { Footer } from './components/Footer';
 import { PrivacyModal } from './components/PrivacyModal';
 import { ContactModal } from './components/ContactModal';
 import { CinematicIntro } from './components/CinematicIntro';
+import { LanguageProvider } from './context/LanguageContext';
 import { InterestType } from './types';
 
 export default function App() {
@@ -48,67 +49,69 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#F4F0E8] selection:bg-[#C9A45C]/30 selection:text-[#F0D28A] flex flex-col font-sans">
-      {/* Cinematic Video Introduction (First Visit Per Session) */}
-      <CinematicIntro />
+    <LanguageProvider>
+      <div className="min-h-screen bg-[#050505] text-[#F4F0E8] selection:bg-[#C9A45C]/30 selection:text-[#F0D28A] flex flex-col font-sans">
+        {/* Cinematic Video Introduction (First Visit Per Session) */}
+        <CinematicIntro />
 
-      {/* 00. Institutional Header / Navbar */}
-      <Header onOpenCandidacy={() => scrollToSection('#candidatura')} />
+        {/* 00. Institutional Header / Navbar */}
+        <Header onOpenCandidacy={() => scrollToSection('#candidatura')} />
 
-      <main className="flex-grow">
-        {/* 01. HERO — THE ARRIVAL */}
-        <Hero
-          onExploreSystem={() => scrollToSection('#sistema-titan')}
-          onStartCandidacy={() => scrollToSection('#candidatura')}
+        <main className="flex-grow">
+          {/* 01. HERO — THE ARRIVAL */}
+          <Hero
+            onExploreSystem={() => scrollToSection('#sistema-titan')}
+            onStartCandidacy={() => scrollToSection('#candidatura')}
+          />
+
+          {/* 02. O PROBLEMA DO NETWORKING CONVENCIONAL */}
+          <ProblemSection />
+
+          {/* 03. O SISTEMA TITAN E SEUS SETE PILARES */}
+          <TitanSystem />
+
+          {/* 04. A JORNADA CONNECT, COUNCIL E GLOBAL */}
+          <MembershipTiers onSelectTier={handleSelectTier} />
+
+          {/* 05. CURADORIA, MÉRITO E EXCLUSIVIDADE */}
+          <ExclusivitySection onRequestEvaluation={() => scrollToSection('#candidatura')} />
+
+          {/* 06. O NÚCLEO FUNDADOR */}
+          <FounderSection onJoinFounderCircle={handleFounderInterest} />
+
+          {/* 07. A EXPERIÊNCIA TITANS */}
+          <ExperienceGallery />
+
+          {/* 08. PROCESSO DE CANDIDATURA */}
+          <ApplicationForm
+            initialInterest={formInterest}
+            onOpenPrivacyModal={() => setIsPrivacyModalOpen(true)}
+          />
+
+          {/* 09. FAQ */}
+          <FAQSection />
+
+          {/* 10. ENCERRAMENTO CINEMATOGRÁFICO */}
+          <CinematicClosing onStartCandidacy={() => scrollToSection('#candidatura')} />
+        </main>
+
+        {/* 11. RODAPÉ INSTITUCIONAL */}
+        <Footer
+          onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
+          onOpenContact={() => setIsContactModalOpen(true)}
         />
 
-        {/* 02. O PROBLEMA DO NETWORKING CONVENCIONAL */}
-        <ProblemSection />
-
-        {/* 03. O SISTEMA TITAN E SEUS SETE PILARES */}
-        <TitanSystem />
-
-        {/* 04. A JORNADA CONNECT, COUNCIL E GLOBAL */}
-        <MembershipTiers onSelectTier={handleSelectTier} />
-
-        {/* 05. CURADORIA, MÉRITO E EXCLUSIVIDADE */}
-        <ExclusivitySection onRequestEvaluation={() => scrollToSection('#candidatura')} />
-
-        {/* 06. O NÚCLEO FUNDADOR */}
-        <FounderSection onJoinFounderCircle={handleFounderInterest} />
-
-        {/* 07. A EXPERIÊNCIA TITANS */}
-        <ExperienceGallery />
-
-        {/* 08. PROCESSO DE CANDIDATURA */}
-        <ApplicationForm
-          initialInterest={formInterest}
-          onOpenPrivacyModal={() => setIsPrivacyModalOpen(true)}
+        {/* Auxiliary Modals */}
+        <PrivacyModal
+          isOpen={isPrivacyModalOpen}
+          onClose={() => setIsPrivacyModalOpen(false)}
         />
 
-        {/* 09. FAQ */}
-        <FAQSection />
-
-        {/* 10. ENCERRAMENTO CINEMATOGRÁFICO */}
-        <CinematicClosing onStartCandidacy={() => scrollToSection('#candidatura')} />
-      </main>
-
-      {/* 11. RODAPÉ INSTITUCIONAL */}
-      <Footer
-        onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
-        onOpenContact={() => setIsContactModalOpen(true)}
-      />
-
-      {/* Auxiliary Modals */}
-      <PrivacyModal
-        isOpen={isPrivacyModalOpen}
-        onClose={() => setIsPrivacyModalOpen(false)}
-      />
-
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
-    </div>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </div>
+    </LanguageProvider>
   );
 }

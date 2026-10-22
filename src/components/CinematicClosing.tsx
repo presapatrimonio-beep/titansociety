@@ -1,11 +1,14 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface CinematicClosingProps {
   onStartCandidacy: () => void;
 }
 
 export const CinematicClosing: React.FC<CinematicClosingProps> = ({ onStartCandidacy }) => {
+  const { language } = useLanguage();
+
   return (
     <section className="relative py-44 bg-[#050505] border-t border-[#151513] overflow-hidden flex items-center justify-center text-center">
       {/* Background Architectural Canvas */}
@@ -29,21 +32,23 @@ export const CinematicClosing: React.FC<CinematicClosingProps> = ({ onStartCandi
         />
 
         <span className="text-xs font-mono uppercase tracking-[0.32em] text-[#D4B36A] block mb-6 font-semibold">
-          O Próximo Movimento Estratégico
+          {language === 'pt' ? 'O Próximo Movimento Estratégico' : 'The Next Strategic Move'}
         </span>
 
         <h2 
           className="text-3xl sm:text-5xl md:text-6xl font-display font-medium text-[#F0EDE6] uppercase tracking-[0.03em] leading-tight mb-8"
           style={{ fontFamily: "'Cinzel', serif" }}
         >
-          Você já construiu.
+          {language === 'pt' ? 'Você já construiu.' : 'You have built.'}
           <span className="block text-[#D4B36A] font-semibold mt-2">
-            Agora escolha com quem crescer.
+            {language === 'pt' ? 'Agora escolha com quem crescer.' : 'Now choose whom to grow with.'}
           </span>
         </h2>
 
         <p className="text-lg sm:text-2xl text-[#F0EDE6]/80 font-serif italic max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-          &ldquo;A grandeza de uma trajetória é medida pela qualidade dos aliados que você escolhe para percorrê-la.&rdquo;
+          {language === 'pt'
+            ? '“A grandeza de uma trajetória é medida pela qualidade dos aliados que você escolhe para percorrê-la.”'
+            : '“The magnitude of an executive journey is measured by the caliber of allies chosen to traverse it.”'}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-md">
@@ -51,7 +56,7 @@ export const CinematicClosing: React.FC<CinematicClosingProps> = ({ onStartCandi
             onClick={onStartCandidacy}
             className="w-full sm:w-auto px-10 py-4 text-xs font-bold gold-button-primary rounded-xs flex items-center justify-center gap-2.5 cursor-pointer tracking-[0.2em]"
           >
-            <span>Iniciar Candidatura</span>
+            <span>{language === 'pt' ? 'Iniciar Candidatura' : 'Apply for Membership'}</span>
             <ArrowUpRight className="w-4 h-4 text-[#050505]" />
           </button>
         </div>

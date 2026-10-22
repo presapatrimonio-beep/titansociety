@@ -1,12 +1,15 @@
 import React from 'react';
 import { ArrowUpRight, Landmark } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface FounderSectionProps {
   onJoinFounderCircle: () => void;
 }
 
 export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCircle }) => {
-  const commitments = [
+  const { language } = useLanguage();
+
+  const commitments = language === 'pt' ? [
     {
       index: '01',
       title: 'ASSIDUIDADE',
@@ -27,6 +30,27 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCir
       title: 'PARTICIPAÇÃO INSTITUCIONAL',
       desc: 'Voz consultiva na sabatina e na curadoria de novos pretendentes, assegurando que o ecossistema preserve sua densidade intelectual e ética.'
     }
+  ] : [
+    {
+      index: '01',
+      title: 'EXECUTIVE DILIGENCE',
+      desc: 'Prioritized attendance and surgical punctuality across board gatherings, establishing the benchmark of executive discipline for all future members.'
+    },
+    {
+      index: '02',
+      title: 'STEWARDSHIP OF REPUTATION',
+      desc: 'Uncompromising guardianship of integrity, absolute discretion in deliberations, and institutional stature within the local market.'
+    },
+    {
+      index: '03',
+      title: 'STRATEGIC GENEROSITY',
+      desc: 'Active disposition to impart high-level intelligence, open doors, and nurture transformative enterprise opportunities with authentic reciprocity.'
+    },
+    {
+      index: '04',
+      title: 'INSTITUTIONAL GOVERNANCE',
+      desc: 'Advisory presence during panel screenings of new candidates, ensuring the ecosystem permanently maintains intellectual and ethical density.'
+    }
   ];
 
   return (
@@ -40,21 +64,27 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCir
         <div className="max-w-4xl text-left mb-20">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.28em] text-[#D4B36A] font-semibold mb-4">
             <Landmark className="w-4 h-4 text-[#D4B36A]" />
-            <span>O Núcleo Fundador · O Quórum Pioneiro</span>
+            <span>
+              {language === 'pt'
+                ? 'O Núcleo Fundador · O Quórum Pioneiro'
+                : 'The Founding Circle · The Inaugural Quorum'}
+            </span>
           </div>
 
           <h2 
             className="text-3xl sm:text-5xl md:text-6xl font-display font-medium text-[#F0EDE6] uppercase tracking-[0.03em] leading-[1.06] mb-6 text-balance"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Algumas pessoas não entram em uma história.
+            {language === 'pt' ? 'Algumas pessoas não entram em uma história.' : 'Some individuals do not simply enter a story.'}
             <span className="block text-[#D4B36A] font-semibold mt-2">
-              Elas ajudam a escrevê-la.
+              {language === 'pt' ? 'Elas ajudam a escrevê-la.' : 'They help write it.'}
             </span>
           </h2>
 
           <p className="text-lg sm:text-xl text-[#F0EDE6]/80 font-serif italic max-w-2xl leading-relaxed font-light">
-            O nascimento de uma instituição: os pioneiros que moldam os alicerces, o tom ético e o padrão de excelência de uma nova praça.
+            {language === 'pt'
+              ? 'O nascimento de uma instituição: os pioneiros que moldam os alicerces, o tom ético e o padrão de excelência de uma nova praça.'
+              : 'The genesis of an institution: pioneers who shape the foundations, the ethical cadence, and the benchmark of excellence in a new hub.'}
           </p>
         </div>
 
@@ -74,11 +104,15 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCir
           <div className="absolute bottom-6 left-6 right-6 sm:left-10 sm:right-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono">
             <div className="flex items-center gap-3 text-[#F0EDE6]">
               <span className="h-2 w-2 rounded-full bg-[#D4B36A]" />
-              <span className="text-[#D4B36A] font-semibold tracking-wider">O ASSENTO FUNDACIONAL</span>
-              <span className="text-[#A6A19A] hidden sm:inline">· RESPONSABILIDADE, VISÃO E CONSTRUÇÃO INSTITUCIONAL</span>
+              <span className="text-[#D4B36A] font-semibold tracking-wider">
+                {language === 'pt' ? 'O ASSENTO FUNDACIONAL' : 'THE FOUNDATIONAL CHAIR'}
+              </span>
+              <span className="text-[#A6A19A] hidden sm:inline">
+                · {language === 'pt' ? 'RESPONSABILIDADE, VISÃO E CONSTRUÇÃO INSTITUCIONAL' : 'STEWARDSHIP, VISION & INSTITUTIONAL BUILDING'}
+              </span>
             </div>
             <div className="text-[#D4B36A] tracking-[0.2em] text-[11px] uppercase font-semibold">
-              QUÓRUM INAUGURAL RESTRITO
+              {language === 'pt' ? 'QUÓRUM INAUGURAL RESTRITO' : 'RESTRICTED INAUGURAL QUORUM'}
             </div>
           </div>
         </div>
@@ -88,13 +122,17 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCir
           
           <div className="lg:col-span-5">
             <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#D4B36A] font-semibold block mb-3">
-              O Papel do Núcleo Fundador
+              {language === 'pt' ? 'O Papel do Núcleo Fundador' : 'The Role of the Founding Circle'}
             </span>
             <p className="text-base text-[#F0EDE6]/80 leading-relaxed font-sans mb-6 font-light">
-              Quando a TITANS SOCIETY inaugura suas operações em um novo polo econômico, os fundadores são os guardiões inegociáveis dos padrões de conduta. Sua solidez moral atrai e valida os próximos líderes que ocuparão as cadeiras exclusivas.
+              {language === 'pt'
+                ? 'Quando a TITANS SOCIETY inaugura suas operações em um novo polo econômico, os fundadores são os guardiões inegociáveis dos padrões de conduta. Sua solidez moral atrai e valida os próximos líderes que ocuparão as cadeiras exclusivas.'
+                : 'When TITANS SOCIETY initiates operations in a new economic hub, founding leaders are non-negotiable guardians of conduct benchmarks. Their moral weight attracts and validates subsequent leaders who will occupy protected seats.'}
             </p>
             <p className="text-xs text-[#A6A19A] leading-relaxed font-mono border-l border-[#D4B36A]/40 pl-4">
-              *O ingresso no Núcleo Fundador está sujeito à aprovação institucional do conselho executivo após sabatina individual. Não há concessão de benefícios societários ou financeiros na instituição.
+              {language === 'pt'
+                ? '*O ingresso no Núcleo Fundador está sujeito à aprovação institucional do conselho executivo após sabatina individual. Não há concessão de benefícios societários ou financeiros na instituição.'
+                : '*Admission to the Founding Circle requires institutional clearance from the Executive Board following an individual panel. No corporate equity or financial concessions are granted.'}
             </p>
           </div>
 
@@ -125,11 +163,13 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onJoinFounderCir
             onClick={onJoinFounderCircle}
             className="px-9 py-4 text-xs font-bold uppercase gold-button-primary rounded-xs flex items-center gap-2.5 cursor-pointer tracking-[0.2em]"
           >
-            <span>Conhecer o Núcleo Fundador</span>
+            <span>{language === 'pt' ? 'Conhecer o Núcleo Fundador' : 'Explore Founding Circle'}</span>
             <ArrowUpRight className="w-4 h-4 text-[#050505]" />
           </button>
           <span className="text-xs font-mono text-[#A6A19A] tracking-wider">
-            Avaliação direta pelo conselho executivo de governança.
+            {language === 'pt'
+              ? 'Avaliação direta pelo conselho executivo de governança.'
+              : 'Direct evaluation by the Executive Governance Council.'}
           </span>
         </div>
 

@@ -1,12 +1,15 @@
 import React from 'react';
 import { ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface ExclusivitySectionProps {
   onRequestEvaluation?: () => void;
 }
 
 export const ExclusivitySection: React.FC<ExclusivitySectionProps> = ({ onRequestEvaluation }) => {
-  const principles = [
+  const { language } = useLanguage();
+
+  const principles = language === 'pt' ? [
     {
       index: '01',
       title: 'CURADORIA',
@@ -31,6 +34,31 @@ export const ExclusivitySection: React.FC<ExclusivitySectionProps> = ({ onReques
       subtitle: 'Blindagem de Cadeira por Segmento',
       desc: 'Uma única organização por especialidade econômica em cada núcleo. Eliminamos qualquer atrito de concorrência interna, garantindo canal aberto e direcionamento irrestrito de referências.'
     }
+  ] : [
+    {
+      index: '01',
+      title: 'CURATION',
+      subtitle: 'Human Screening of Integrity',
+      desc: 'No financial contribution substitutes an unblemished track record of integrity. We assess operational maturity, market stature, and ethical resonance with our ethos.'
+    },
+    {
+      index: '02',
+      title: 'REPUTATION',
+      subtitle: 'Non-Negotiable Intangible Capital',
+      desc: 'At executive altitudes, a leader’s word precedes contracts. We cross-reference peer intelligence to ensure each chair is held by those who honor their pledges.'
+    },
+    {
+      index: '03',
+      title: 'COMMITMENT',
+      subtitle: 'Presence & Strategic Generosity',
+      desc: 'The society tolerates no spectators. We require surgical punctuality, verified attendance, and active generosity in opening doors for fellow members.'
+    },
+    {
+      index: '04',
+      title: 'EXCLUSIVITY',
+      subtitle: 'Protected Single Seat by Sector',
+      desc: 'A single enterprise per economic specialty in each regional chapter. Eliminating intra-group competition, guaranteeing untangled channels for high-value referrals.'
+    }
   ];
 
   const handleCta = () => {
@@ -53,21 +81,29 @@ export const ExclusivitySection: React.FC<ExclusivitySectionProps> = ({ onReques
         <div className="max-w-4xl text-left mb-20">
           <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.28em] text-[#D4B36A] font-semibold mb-4">
             <ShieldCheck className="w-4 h-4 text-[#D4B36A]" />
-            <span>Critério de Admissão & Blindagem de Cadeira</span>
+            <span>
+              {language === 'pt'
+                ? 'Critério de Admissão & Blindagem de Cadeira'
+                : 'Admission Criteria & Seat Protection'}
+            </span>
           </div>
 
           <h2 
             className="text-3xl sm:text-5xl md:text-6xl font-display font-medium text-[#F0EDE6] uppercase tracking-[0.03em] leading-[1.06] mb-6 text-balance"
             style={{ fontFamily: "'Cinzel', serif" }}
           >
-            Não é sobre ter acesso a todos.
+            {language === 'pt' ? 'Não é sobre ter acesso a todos.' : 'It is not about accessing everyone.'}
             <span className="block text-[#D4B36A] font-semibold mt-2">
-              É sobre construir acesso às pessoas certas.
+              {language === 'pt'
+                ? 'É sobre construir acesso às pessoas certas.'
+                : 'It is about building access to the right people.'}
             </span>
           </h2>
 
           <p className="text-lg sm:text-xl text-[#F0EDE6]/80 font-serif italic max-w-2xl leading-relaxed font-light">
-            A proteção do ecossistema é o maior ativo entregue a cada membro. Quatro alicerces inegociáveis guardam as portas da TITANS SOCIETY.
+            {language === 'pt'
+              ? 'A proteção do ecossistema é o maior ativo entregue a cada membro. Quatro alicerces inegociáveis guardam as portas da TITANS SOCIETY.'
+              : 'Ecosystem protection is the highest asset delivered to every member. Four non-negotiable cornerstones guard the doors of TITANS SOCIETY.'}
           </p>
         </div>
 
@@ -90,10 +126,12 @@ export const ExclusivitySection: React.FC<ExclusivitySectionProps> = ({ onReques
             <div className="flex items-center gap-3 text-[#F0EDE6]">
               <span className="h-2 w-2 rounded-full bg-[#D4B36A]" />
               <span className="tracking-widest uppercase font-semibold text-[#D4B36A]">THE INNER GATE</span>
-              <span className="text-[#A6A19A] hidden sm:inline">· AUDITORIA DE REPUTAÇÃO E CONDUTA</span>
+              <span className="text-[#A6A19A] hidden sm:inline">
+                · {language === 'pt' ? 'AUDITORIA DE REPUTAÇÃO E CONDUTA' : 'REPUTATION & CONDUCT AUDIT'}
+              </span>
             </div>
             <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#D4B36A] font-medium">
-              CURADORIA 100% HUMANA
+              {language === 'pt' ? 'CURADORIA 100% HUMANA' : '100% HUMAN CURATION'}
             </div>
           </div>
         </div>
@@ -128,14 +166,16 @@ export const ExclusivitySection: React.FC<ExclusivitySectionProps> = ({ onReques
         {/* Quiet Authority Resolution */}
         <div className="mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-left">
           <p className="text-sm font-sans text-[#A6A19A] font-light max-w-md">
-            A disponibilidade de cadeiras é rigorosamente auditada antes de qualquer convite formal ou abertura de sabatina.
+            {language === 'pt'
+              ? 'A disponibilidade de cadeiras é rigorosamente auditada antes de qualquer convite formal ou abertura de sabatina.'
+              : 'Seat availability is rigorously audited prior to any formal invitation or panel review.'}
           </p>
 
           <button
             onClick={handleCta}
             className="px-9 py-4 text-xs font-bold uppercase gold-button-primary rounded-xs flex items-center gap-2.5 cursor-pointer tracking-[0.2em]"
           >
-            <span>Solicitar Avaliação</span>
+            <span>{language === 'pt' ? 'Solicitar Avaliação' : 'Request Evaluation'}</span>
             <ArrowUpRight className="w-4 h-4 text-[#050505]" />
           </button>
         </div>

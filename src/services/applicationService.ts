@@ -1,52 +1,59 @@
 import { ApplicationFormData, ApplicationResponse } from '../types';
+import { Language } from '../i18n/types';
+import { ptTranslations } from '../i18n/pt';
+import { enTranslations } from '../i18n/en';
 
-export const validateApplicationForm = (data: ApplicationFormData): Record<string, string> => {
+export const validateApplicationForm = (
+  data: ApplicationFormData,
+  lang: Language = 'pt'
+): Record<string, string> => {
   const errors: Record<string, string> = {};
+  const v = lang === 'en' ? enTranslations.form.validation : ptTranslations.form.validation;
 
   if (!data.fullName.trim() || data.fullName.trim().split(' ').length < 2) {
-    errors.fullName = 'Informe seu nome completo (nome e sobrenome).';
+    errors.fullName = v.fullName;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!data.businessEmail.trim() || !emailRegex.test(data.businessEmail.trim())) {
-    errors.businessEmail = 'Informe um e-mail corporativo válido.';
+    errors.businessEmail = v.businessEmail;
   }
 
   const cleanPhone = data.phone.replace(/\D/g, '');
   if (!cleanPhone || cleanPhone.length < 10) {
-    errors.phone = 'Informe um telefone/WhatsApp válido com DDD (mínimo 10 dígitos).';
+    errors.phone = v.phone;
   }
 
   if (!data.city.trim()) {
-    errors.city = 'Informe a sua cidade.';
+    errors.city = v.city;
   }
 
   if (!data.state.trim()) {
-    errors.state = 'Informe o estado (UF).';
+    errors.state = v.state;
   }
 
   if (!data.companyName.trim()) {
-    errors.companyName = 'Informe o nome da sua empresa.';
+    errors.companyName = v.companyName;
   }
 
   if (!data.jobTitle.trim()) {
-    errors.jobTitle = 'Informe seu cargo ou posição na empresa.';
+    errors.jobTitle = v.jobTitle;
   }
 
   if (!data.businessSegment.trim()) {
-    errors.businessSegment = 'Especifique o segmento de atuação da empresa.';
+    errors.businessSegment = v.businessSegment;
   }
 
   if (!data.websiteOrProfile.trim()) {
-    errors.websiteOrProfile = 'Informe o site da empresa ou perfil do LinkedIn.';
+    errors.websiteOrProfile = v.websiteOrProfile;
   }
 
   if (!data.objective.trim() || data.objective.trim().length < 20) {
-    errors.objective = 'Descreva seu objetivo com ao menos 20 caracteres para avaliação do comitê.';
+    errors.objective = v.objective;
   }
 
   if (!data.consentPrivacy) {
-    errors.consentPrivacy = 'É necessário concordar com o tratamento dos dados pessoais conforme nossa Política de Privacidade.';
+    errors.consentPrivacy = v.consentPrivacy;
   }
 
   return errors;
@@ -54,17 +61,19 @@ export const validateApplicationForm = (data: ApplicationFormData): Record<strin
 
 /**
  * Submits the institutional candidacy to the evaluation queue.
- * Operates with an isolated service layer pattern to decouple UI from backend transport.
  */
 export const submitCandidacy = async (
-  data: ApplicationFormData
+  data: ApplicationFormData,
+  lang: Language = 'pt'
 ): Promise<ApplicationResponse> => {
-  const errors = validateApplicationForm(data);
+  const errors = validateApplicationForm(data, lang);
+  const t = lang === 'en' ? enTranslations.form : ptTranslations.form;
+
   if (Object.keys(errors).length > 0) {
     const firstErrorMessage = Object.values(errors)[0];
     return {
       success: false,
-      message: firstErrorMessage || 'Por favor, revise os campos do formulário antes de enviar.',
+      message: firstErrorMessage || t.validation.reviewFields,
     };
   }
 
@@ -81,6 +90,7 @@ export const submitCandidacy = async (
       protocolNumber,
       timestamp,
       status: 'RECEBIDO_EM_ANALISE',
+      language: lang,
     };
 
     try {
@@ -96,12 +106,12 @@ export const submitCandidacy = async (
       success: true,
       protocolNumber,
       timestamp,
-      message: `Candidatura registrada com sucesso sob o protocolo institucional ${protocolNumber}. Nossa Secretaria Executiva e o Comitê de Admissão iniciarão a análise confidencial.`,
+      message: `${t.successResponsePrefix}${protocolNumber}${t.successResponseSuffix}`,
     };
-  } catch (err) {
+  } catch {
     return {
       success: false,
-      message: 'Não foi possível registrar a candidatura no momento. Por favor, tente novamente em instantes ou contate nossa secretaria.',
+      message: t.unexpectedError,
     };
   }
 };
