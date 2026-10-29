@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCandidacy }) => {
               src="/assets/logo2.png"
               alt="TITANS SOCIETY"
               className={`${
-                isScrolled ? 'h-12 sm:h-14 md:h-16' : 'h-16 sm:h-20 md:h-24 lg:h-28'
+                isScrolled ? 'h-14 sm:h-16 md:h-18 lg:h-20' : 'h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36'
               } w-auto object-contain filter drop-shadow-[0_4px_24px_rgba(212,179,106,0.35)] transition-all duration-300 group-hover:opacity-95 group-hover:scale-102`}
             />
           </a>

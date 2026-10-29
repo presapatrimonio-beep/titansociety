@@ -143,13 +143,13 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
       <div className="fixed inset-0 z-20 pointer-events-none shadow-[inset_0_0_120px_rgba(5,5,5,0.7)]" />
 
       {/* 3. Top Institutional Branding */}
-      <header className="relative z-30 pt-8 sm:pt-12 px-6 flex flex-col items-center pointer-events-none animate-fadeIn">
+      <header className="relative z-30 pt-6 sm:pt-10 px-6 flex flex-col items-center pointer-events-none animate-fadeIn">
         <img
           src="/assets/logo2.png"
           alt="TITANS SOCIETY"
-          className="h-16 sm:h-20 md:h-24 w-auto object-contain filter drop-shadow-[0_4px_30px_rgba(212,179,106,0.45)] mb-3"
+          className="h-28 sm:h-36 md:h-44 lg:h-52 w-auto object-contain filter drop-shadow-[0_6px_40px_rgba(212,179,106,0.55)] mb-3 transition-all duration-300"
         />
-        <div className="text-[10px] sm:text-[11px] font-mono tracking-[0.35em] text-[#D4B36A] uppercase font-semibold">
+        <div className="text-[10px] sm:text-[11px] md:text-xs font-mono tracking-[0.35em] text-[#D4B36A] uppercase font-semibold text-center">
           INTENTIONAL BUSINESS NETWORKING
         </div>
       </header>
