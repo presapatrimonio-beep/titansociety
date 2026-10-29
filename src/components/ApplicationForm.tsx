@@ -201,7 +201,7 @@ export const ApplicationForm: React.FC<ApplicationFormProps> = ({
 
             <div className="relative z-10 text-left">
               <img
-                src="/assets/logo.png"
+                src="/assets/logo2.png"
                 alt="TITANS SOCIETY"
                 className="h-14 sm:h-18 w-auto object-contain filter drop-shadow-[0_4px_22px_rgba(212,179,106,0.35)] mb-8"
               />

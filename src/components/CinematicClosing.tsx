@@ -26,7 +26,7 @@ export const CinematicClosing: React.FC<CinematicClosingProps> = ({ onStartCandi
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 flex flex-col items-center">
         <img
-          src="/assets/logo.png"
+          src="/assets/logo2.png"
           alt="TITANS SOCIETY"
           className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain filter drop-shadow-[0_6px_35px_rgba(212,179,106,0.3)] mb-8 opacity-95"
         />

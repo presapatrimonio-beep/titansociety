@@ -145,7 +145,7 @@ export const CinematicIntro: React.FC<CinematicIntroProps> = ({ onComplete }) =>
       {/* 3. Top Institutional Branding */}
       <header className="relative z-30 pt-8 sm:pt-12 px-6 flex flex-col items-center pointer-events-none animate-fadeIn">
         <img
-          src="/assets/logo.png"
+          src="/assets/logo2.png"
           alt="TITANS SOCIETY"
           className="h-16 sm:h-20 md:h-24 w-auto object-contain filter drop-shadow-[0_4px_30px_rgba(212,179,106,0.45)] mb-3"
         />

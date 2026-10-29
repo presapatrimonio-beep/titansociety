@@ -14,7 +14,7 @@ export const TitansLogo: React.FC<TitansLogoProps> = ({
   return (
     <div className={`relative inline-flex items-center select-none ${className}`}>
       <img
-        src="/assets/logo.png"
+        src="/assets/logo2.png"
         alt="TITANS SOCIETY Logo Oficial"
         className="w-auto object-contain filter drop-shadow-[0_2px_14px_rgba(201,164,92,0.25)] transition-transform duration-300"
         style={{ height: typeof height === 'number' ? `${height}px` : height }}
